@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_bloc/logic/bloc/counter_bloc.dart';
-import 'package:learn_bloc/presentation/screens/counter_page_1.dart';
-import 'package:learn_bloc/presentation/screens/counter_page_2.dart';
-import 'package:learn_bloc/presentation/screens/counter_page_3.dart';
+import 'package:learn_bloc/presentation/router/app_router.dart';
 
 void main() {
   runApp(const CounterApp());
@@ -17,33 +13,19 @@ class CounterApp extends StatefulWidget {
 }
 
 class _CounterAppState extends State<CounterApp> {
-  final _counterBloc = CounterBloc();
+  final _router = AppRouter();
 
-  /// Only provide access for widgets that need it
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: CounterPage1.routeName,
-      routes: {
-        CounterPage1.routeName: (context) => BlocProvider.value(
-              value: _counterBloc,
-              child: const CounterPage1(),
-            ),
-        CounterPage2.routeName: (context) => BlocProvider.value(
-              value: _counterBloc,
-              child: const CounterPage2(),
-            ),
-        CounterPage3.routeName: (context) => BlocProvider.value(
-              value: _counterBloc,
-              child: const CounterPage3(),
-            ),
-      },
+      initialRoute: _router.initialRoute,
+      onGenerateRoute: _router.onGenerateRouteRoute,
     );
   }
 
   @override
   void dispose() {
+    _router.dispose();
     super.dispose();
-    _counterBloc.close();
   }
 }
