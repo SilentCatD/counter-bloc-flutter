@@ -69,6 +69,7 @@ class CounterPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
+                      /// Important, must use a different context here mul
                       builder: (_) =>
                           BlocProvider.value(
                             value: context.read<CounterBloc>(),
