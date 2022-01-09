@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_bloc/logic/bloc/counter_bloc.dart';
 import 'package:learn_bloc/presentation/router/app_router.dart';
 
 void main() {
-  runApp(const CounterApp());
+  runApp(CounterApp());
 }
 
-class CounterApp extends StatefulWidget {
-  const CounterApp({Key? key}) : super(key: key);
-
-  @override
-  State<CounterApp> createState() => _CounterAppState();
-}
-
-class _CounterAppState extends State<CounterApp> {
+class CounterApp extends StatelessWidget {
+  CounterApp({Key? key}) : super(key: key);
   final _router = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: _router.initialRoute,
-      onGenerateRoute: _router.onGenerateRouteRoute,
+    return BlocProvider(
+      create: (context) => CounterBloc(),
+      child: MaterialApp(
+        initialRoute: _router.initialRoute,
+        onGenerateRoute: _router.onGenerateRouteRoute,
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    _router.dispose();
-    super.dispose();
   }
 }
