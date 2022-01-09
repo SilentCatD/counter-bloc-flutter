@@ -13,6 +13,7 @@ class CounterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /// notice BlocProvider is a child of MaterialApp
       home: BlocProvider(
         create: (context) => CounterBloc(),
         child: const CounterPage(),
