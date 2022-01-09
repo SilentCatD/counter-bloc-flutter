@@ -9,21 +9,41 @@ void main() {
   runApp(const CounterApp());
 }
 
-class CounterApp extends StatelessWidget {
+class CounterApp extends StatefulWidget {
   const CounterApp({Key? key}) : super(key: key);
 
   @override
+  State<CounterApp> createState() => _CounterAppState();
+}
+
+class _CounterAppState extends State<CounterApp> {
+  final _counterBloc = CounterBloc();
+
+  /// Only provide access for widgets that need it
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterBloc(),
-      child: MaterialApp(
-        initialRoute: CounterPage1.routeName,
-        routes: {
-          CounterPage1.routeName: (context) => const CounterPage1(),
-          CounterPage2.routeName: (context) => const CounterPage2(),
-          CounterPage3.routeName: (context) => const CounterPage3(),
-        },
-      ),
+    return MaterialApp(
+      initialRoute: CounterPage1.routeName,
+      routes: {
+        CounterPage1.routeName: (context) => BlocProvider.value(
+              value: _counterBloc,
+              child: const CounterPage1(),
+            ),
+        CounterPage2.routeName: (context) => BlocProvider.value(
+              value: _counterBloc,
+              child: const CounterPage2(),
+            ),
+        CounterPage3.routeName: (context) => BlocProvider.value(
+              value: _counterBloc,
+              child: const CounterPage3(),
+            ),
+      },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _counterBloc.close();
   }
 }

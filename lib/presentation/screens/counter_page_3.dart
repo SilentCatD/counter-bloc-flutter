@@ -7,6 +7,7 @@ import 'counter_page_1.dart';
 class CounterPage3 extends StatelessWidget {
   const CounterPage3({Key? key}) : super(key: key);
   static const routeName = '/counter-page-3';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,10 +66,12 @@ class CounterPage3 extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacementNamed(CounterPage1.routeName);
-                },
-                child: const Text("Switch to screen 1")),
+              onPressed: () {
+                Navigator.of(context)
+                    .pushReplacementNamed(CounterPage1.routeName);
+              },
+              child: const Text("Switch to screen 1"),
+            ),
           ],
         ),
       ),
