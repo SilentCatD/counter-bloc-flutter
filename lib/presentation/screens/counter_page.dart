@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_bloc/logic/bloc/counter_bloc.dart';
+import 'package:learn_bloc/logic/counter_bloc//counter_bloc.dart';
 
 class CounterPage extends StatelessWidget {
-  const CounterPage(
-      {Key? key,  this.index=0})
-      : super(key: key);
-  final int index;
+  const CounterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Screen $index"),
+        title: const Text("Counter"),
       ),
       body: Center(
         child: Column(
@@ -65,22 +62,6 @@ class CounterPage extends StatelessWidget {
                 ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      /// Important, must use a different context here mul
-                      builder: (_) =>
-                          BlocProvider.value(
-                            value: context.read<CounterBloc>(),
-                            child:  CounterPage(
-                              index: index+1,
-                            ),
-                          ),
-                    ),
-                  );
-                },
-                child:  Text("Switch to screen ${index+1}")),
           ],
         ),
       ),

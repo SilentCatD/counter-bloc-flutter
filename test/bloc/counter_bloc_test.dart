@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:learn_bloc/logic//bloc/counter_bloc.dart';
+import 'package:learn_bloc/logic/counter_bloc//counter_bloc.dart';
 
 void main() {
   group("CounterBloc test", () {

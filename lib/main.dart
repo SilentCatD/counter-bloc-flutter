@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_bloc/logic/bloc/counter_bloc.dart';
+import 'package:learn_bloc/logic/counter_bloc//counter_bloc.dart';
 import 'package:learn_bloc/presentation/screens/counter_page.dart';
 
 void main() {
