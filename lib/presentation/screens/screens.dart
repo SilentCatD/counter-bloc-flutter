@@ -1,3 +1,1 @@
-export 'counter_page_1.dart';
-export 'counter_page_2.dart';
-export 'counter_page_3.dart';
+export 'counter_screen/counter_screen.dart';

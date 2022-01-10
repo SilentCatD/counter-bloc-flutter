@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_bloc/logic/counter_bloc//counter_bloc.dart';
+import 'package:learn_bloc/logic/counter_logic/counter_logic.dart';
 
-import 'counter_page_3.dart';
+class CounterScreen extends StatelessWidget {
+  const CounterScreen({Key? key}) : super(key: key);
+  static const routeName = '/counter-screen';
 
-class CounterPage2 extends StatelessWidget {
-  const CounterPage2({Key? key}) : super(key: key);
-  static const routeName = '/counter-page-2';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Screen 2"),
+        title: const Text("Counter screen"),
       ),
       body: Center(
         child: Column(
@@ -64,11 +63,6 @@ class CounterPage2 extends StatelessWidget {
                 ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacementNamed(CounterPage3.routeName);
-                },
-                child: const Text("Switch to screen 3")),
           ],
         ),
       ),
